@@ -13,11 +13,11 @@
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <SourceControlInformationFeatureSupported>true</SourceControlInformationFeatureSupported>
     <EnableDynamicLoading>true</EnableDynamicLoading>
-    
+
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <NoWarn>108,109</NoWarn>
-    
-    <RootNamespace>NWN.Native.API</RootNamespace>
+
+    <RootNamespace>NWN.Native</RootNamespace>
   </PropertyGroup>
 
   <!--Package-->
@@ -42,10 +42,9 @@
     <DebugSymbols>true</DebugSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
-  
+
   <ItemGroup>
-    <Compile Remove="src\main\API\ICGameObject.cs" />
-    <Compile Remove="src\main\API\ICNWItem.cs" />
+    <ProjectReference Include="..\NWN.Native.Generators\NWN.Native.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
   </ItemGroup>
 
   <ItemGroup>
