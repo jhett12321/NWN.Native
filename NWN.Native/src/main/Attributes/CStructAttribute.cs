@@ -3,7 +3,4 @@
 namespace NWN.Native.Attributes;
 
 [AttributeUsage(AttributeTargets.Struct)]
-internal class CStructAttribute : Attribute
-{
-
-}
+internal class CStructAttribute : Attribute;

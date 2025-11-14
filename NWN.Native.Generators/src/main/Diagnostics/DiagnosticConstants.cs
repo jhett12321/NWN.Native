@@ -27,4 +27,12 @@ internal static class DiagnosticConstants
     "syntax",
     DiagnosticSeverity.Error,
     true);
+
+  public static readonly DiagnosticDescriptor FixedArraySizeTooSmall = new(
+    "CNW004",
+    "Inline array size too small",
+    "Inline array length must be greater than 0",
+    "syntax",
+    DiagnosticSeverity.Error,
+    true);
 }
