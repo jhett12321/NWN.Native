@@ -53,19 +53,18 @@ internal class CStructGenerator : IIncrementalGenerator
       if (semanticModel.GetDeclaredSymbol(contextStruct.Context) is INamedTypeSymbol typeSymbol)
       {
         CStructTypeInfo typeInfo = new(typeSymbol);
-        productionContext.AddSource(contextStruct.GeneratedFileName, GenerateStruct(contextStruct, typeInfo, productionContext));
+        List<CMethodInfo> targetMethods = GetTargetMethods(typeInfo);
+
+        if (targetMethods.Count > 0)
+        {
+          productionContext.AddSource(contextStruct.GeneratedFileName, GenerateStruct(contextStruct, typeInfo, targetMethods, productionContext));
+        }
       }
     }
   }
 
-  private static string GenerateStruct(CStructContextInfo contextInfo, CStructTypeInfo typeInfo, SourceProductionContext productionContext)
+  private static string GenerateStruct(CStructContextInfo contextInfo, CStructTypeInfo typeInfo, List<CMethodInfo> targetMethods, SourceProductionContext productionContext)
   {
-    List<CMethodInfo> targetMethods = GetTargetMethods(typeInfo);
-    if (targetMethods.Count == 0)
-    {
-      return string.Empty;
-    }
-
     using StringWriter stringWriter = new();
     using IndentedTextWriter textWriter = new(stringWriter, "  ");
 
